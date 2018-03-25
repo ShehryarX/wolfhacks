@@ -31,14 +31,14 @@ $(document).ready(function() {
     $('.tab').removeClass('selected');
     $('.tab.left').addClass('selected');
   });
-  
+
   $('.tab.middle').click(function() {
     $('.content').css('display', 'none');
     $('.content.events').css('display', 'block');
     $('.tab').removeClass('selected');
     $('.tab.middle').addClass('selected');
   });
-  
+
   $('.tab.right').click(function() {
     $('.content').css('display', 'none');
     $('.content.lifestyle').css('display', 'block');
@@ -110,7 +110,7 @@ function updateNutrition(food) {
     months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
     time = days[d.getDay()]+' '+months[d.getMonth()]+' '+d.getDate()+' '+d.getFullYear()+' '+hours%12+':'+minutes+' '+ampm;
-    
+
     $('.content.nutrition .content-list').append('<div class="content-box"><h3>' + time + '</h3><h4>Food Item: </h4><p>' + foodName + '</p><br><br><h4>Calories: </h4><p>' + numCalories + '</p></div>');
   }
 
@@ -182,3 +182,41 @@ function addFood(foodName, numCalories) {
   });
 }
 
+function startListening() {
+	var recognition = new (webkitSpeechRecognition || SpeechRecognition)();
+	recognition.lang = 'en-US';
+	recognition.interimResults = false;
+	recognition.maxAlternatives = 1;
+	recognition.start();
+
+	[
+	 'onaudiostart',
+	 'onaudioend',
+	 'onend',
+	 'onerror',
+	 'onnomatch',
+	 'onresult',
+	 'onsoundstart',
+	 'onsoundend',
+	 'onspeechend',
+	 'onstart'
+	].forEach(function(eventName) {
+		recognition[eventName] = function(e) {
+			console.log(eventName, e);
+		};
+	});
+
+	document.querySelector('#start-button').innerHTML = 'Listening...';
+
+	recognition.onend = function() {
+		document.querySelector('#start-button').innerHTML = 'Start Listening';
+	};
+	recognition.onresult = function() {
+		document.querySelector('#demo-echo').textContent = event.results[0][0].transcript;
+	};
+};
+
+(function() {
+  $('#start-button').on('click', startListening);
+  console.log('rpressed');
+})();
