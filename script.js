@@ -95,6 +95,9 @@ $(document).ready(function() {
       ]
     }
   });
+
+  $('#start-button').on('click', startListening);
+  console.log('rpressed');
 });
 
 
@@ -169,6 +172,51 @@ function updateNutrition(food) {
       ]
     }
   });
+
+  var sleepCtx = document.getElementById("sleepChart").getContext('2d');
+
+  this.lineChart = new Chart(sleepCtx, {
+    type: 'line',
+    options: {
+      legend: {
+        display: false
+      },
+      tooltips: {
+        callbacks: {
+          label: function(tooltipItem) {
+            return tooltipItem.yLabel;
+          }
+        }
+      }
+    },
+    data: {
+      labels: ["Mar 22", "Mar 23", "Mar 24", "Mar 25"],
+      datasets: [
+        {
+          label: "Dataset",
+          fill: false,
+          lineTension: 0.1,
+          backgroundColor: "rgba(75,192,192,0.4)",
+          borderColor: "rgba(75,192,192,1)",
+          borderCapStyle: 'butt',
+          borderDash: [],
+          borderDashOffset: 0.0,
+          borderJoinStyle: 'miter',
+          pointBorderColor: "rgba(75,192,192,1)",
+          pointBackgroundColor: "#fff",
+          pointBorderWidth: 1,
+          pointHoverRadius: 5,
+          pointHoverBackgroundColor: "rgba(75,192,192,1)",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          pointHoverBorderWidth: 2,
+          pointRadius: 1,
+          pointHitRadius: 10,
+          data: [6.2, 6.15, 8.5, 8.1],
+          spanGaps: false,
+        }
+      ]
+    }
+  });
 }
 
 function addFood(foodName, numCalories) {
@@ -215,8 +263,3 @@ function startListening() {
 		document.querySelector('#demo-echo').textContent = event.results[0][0].transcript;
 	};
 };
-
-(function() {
-  $('#start-button').on('click', startListening);
-  console.log('rpressed');
-})();

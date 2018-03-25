@@ -155,12 +155,12 @@ html, body, .container {
   font-size: 1.3rem;
 }
 
-.content.nutrition .content-list {
+.content .content-list {
   width: 60vw;
   float: left;
 }
 
-.content.nutrition h3 {
+.content h3 {
   font-family: 'Open Sans';
   font-size: 1.3rem;
   font-weight: normal;
