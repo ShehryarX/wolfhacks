@@ -46,7 +46,7 @@ html, body, .container {
   height: 30vh;
   border-radius: 50%;
   position: relative;
-  z-index: 2;
+  z-index: 4;
 }
 
 .tab.left {
@@ -55,6 +55,7 @@ html, body, .container {
   width: 25vh;
   border-radius: 50%;
   margin-right: -5vh;
+  z-index: 2;
 }
 
 .tab.left h3 {
@@ -67,6 +68,7 @@ html, body, .container {
   width: 25vh;
   border-radius: 50%;
   margin-left: -5vh;
+  z-index: 2;
 }
 
 .tab.right h3 {
@@ -79,7 +81,7 @@ html, body, .container {
   width: 33vh;
   border-radius: 50%;
   background: #fff;
-  z-index: 1;
+  z-index: 3;
 }
 
 .tab.selected {
@@ -103,12 +105,13 @@ html, body, .container {
   overflow-x: hidden;
 }
 
-.content-container::before {
-  content: "";
+.fade {
   width: 100%;
   height: 100%;    
-  position: absolute;
+  position: fixed;
   background: linear-gradient( rgba(255, 255, 255, 0) 50%, #fff);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .content h1 {
@@ -157,6 +160,12 @@ html, body, .container {
   float: left;
 }
 
+.content.nutrition h3 {
+  font-family: 'Open Sans';
+  font-size: 1.3rem;
+  font-weight: normal;
+}
+
 .chart {
   width: 30vw;
   float: right;
@@ -173,7 +182,7 @@ html, body, .container {
 
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 720px) {
   .tab h3 {
     font-size: 1.2rem;
   }
@@ -210,6 +219,18 @@ html, body, .container {
 
   .content {
     height: 72vh;
+  }
+
+  .content.nutrition .content-list {
+    width: 80vw;
+    float: none;
+    margin: auto;
+  }
+  
+  .chart {
+    width: 70vw;
+    float: none;
+    margin: auto;
   }
 }
 

@@ -122,6 +122,7 @@ function updateNutrition(food) {
     calorieCounter += food[j].calories;
     nameLabels.push('');
     calorieLabels.push(calorieCounter);
+    $("#totalCalories").html("Total Calories Today: " + calorieCounter);
   }
 
   var foodCtx = document.getElementById("foodChart").getContext('2d');
