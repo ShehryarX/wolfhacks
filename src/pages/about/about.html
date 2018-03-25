@@ -7,5 +7,11 @@
 </ion-header>
 
 <ion-content padding>
+  <p span class="instructions">
+    Hey there! Just hit the record button and tell us about your day.
+  </p>
+
+  <ion-input type="text" placeholder="Query" [(ngModel)]="question" ></ion-input>
+  <button ion-button type="submit" click="fetch()" block>Ask!</button>
 
 </ion-content>

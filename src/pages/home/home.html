@@ -5,13 +5,51 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-card>
+    <ion-card-header class="title">
+      Today
+    </ion-card-header>
+    <ion-card-content class="title_details">
+      <h2>
+        Consumed: <ion-badge>1000 cal</ion-badge>
+        <br/>
+        Remaining: <ion-badge> 892 cal</ion-badge>
+      </h2>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid class="gridTitle">
+    <ion-row>
+      <ion-col>
+        Food Name
+      </ion-col>
+      <ion-col>
+        Calories
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <div *ngFor="let fooditem of food; let i = index">
+      <ion-row>
+        <ion-col>
+          {{ fooditem.name }}
+        </ion-col>
+        <ion-col>
+          {{ fooditem.calories }}
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+
+ <ion-card>
+   <ion-card-header>
+     Line Chart
+   </ion-card-header>
+   <ion-card-content>
+     <canvas #lineCanvas></canvas>
+   </ion-card-content>
+ </ion-card>
+
+
 </ion-content>
