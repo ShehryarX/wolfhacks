@@ -178,6 +178,11 @@ html, body, .container {
   clear: both;
 }
 
+.events p {
+  font-family: "Open Sans";
+  font-size: 25px;
+}
+
 
 
 
